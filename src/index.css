@@ -1,13 +1,371 @@
-body {
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --primary-hue: 210;
+  --gray-hue: 240;
+  --color-primary: hsl(var(--primary-hue), 100%, 50%);
+  --color-primary-variant: hsl(var(--primary-hue), 100%, 65%);
+  --color-secondary: #ffb116;
+  --color-gray-100: hsl(var(--gray-hue), 47%, 94%);
+  --color-gray-200: hsl(var(--gray-hue), 26%, 75%);
+  --color-gray-300: hsl(var(--gray-hue), 24%, 64%);
+  --color-gray-400: hsl(var(--gray-hue), 16%, 41%);
+  --color-gray-500: hsl(var(--gray-hue), 44%, 25%);
+  --color-gray-600: hsl(var(--gray-hue), 48%, 15%);
+  --container-width-lg: 80%;
+  --container-width-md: 90%;
+  --transition: all 500ms ease;
+}
+
+/* GENERAL STYLES */
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--color-gray-200);
+  line-height: 1.7;
+  overflow-x: hidden;
+  background: var(--color-gray-600) url('./images/bg_texture.png');
+}
+
+.container {
+  width: var(--container-width-lg);
+  max-width: 1920px;
+  margin-inline: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 1.2;
+  color: var(--color-gray-100);
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+a {
+  color: var(--color-gray-100);
+}
+
+img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.bttn {
+  color: var(--color-gray-100);
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0.9rem 2rem;
+  background: var(--color-primary);
+  border-radius: 1.5rem;
+  transition: var(--transition);
+}
+
+.bttn:hover {
+  background: var(--color-secondary);
+  color: var(--color-gray-100);
+}
+
+.bttn.lg {
+  padding: 1.2rem 3rem;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+}
+
+.bttn.sm {
+  padding: 0.4rem 1.2rem;
+  font-size: 1rem;
+}
+
+.bttn.sm:hover {
+  background: var(--color-gray-100);
+}
+
+section {
+  margin-top: 10rem;
+}
+
+.sectiontohead {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sectiontohead span {
+  background: var(--color-gray-500);
+  pad: 0.8rem;
+  border-radius: 1rem;
+  color: var(--color-secondary);
+  font-size: 1.5rem;
+}
+
+.card {
+  background: var(--color-gray-500);
+  border: 2px solid transparent;
+  text-align: center;
+  padding: 3rem 2rem;
+  border-radius: 0 3rem 0 3rem;
+  transition: var(--transition);
+}
+
+.card:hover {
+  background: transparent;
+  border-color: var(--color-gray-400);
+  cursor: default;
+}
+
+.card span {
+  width: 3rem;
+  height: 3rem;
+  background: var(--color-primary);
+  color: var(--color-gray-100);
+  font-size: 1.5rem;
+  padding: 0.8rem;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.5rem;
+  margin-inline: auto;
+  border-radius: 1rem;
+  transition: var(--transition);
+}
+
+.card:hover span {
+  background: var(--color-secondary);
+  color: var(--color-gray-600);
+}
+
+.card small {
+  margin-top: 1rem;
+  display: block;
+  font-weight: 300;
+}
+
+.header {
+  margin-top: 5rem;
+  height: 20rem;
+  overflow: hidden;
+  border-bottom: 2px solid var(--color-gray-400);
+}
+
+.headertocontainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: black;
+}
+
+.headertocontainer-bg {
+  position: absolute;
+  width: 100%;
+}
+
+.headertocontainer-bg img {
+  opacity: 0.5;
+}
+
+.headertocontent {
+  position: relative;
+  width: 44%;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--color-gray-100);
+}
+
+.headertocontent h4 {
+  margin-bottom: 1rem;
+}
+
+.headertocontent p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* MEDIA QUERIES (medium screen) */
+@media screen and (max-width: 1024px) {
+  .container {
+    width: var(--container-width-md);
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .headertocontent {
+    width: 76%;
+  }
+}
+
+/* MEDIA QUERIES (small screen) */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 2.2rem;
+    line-height: 1.3;
+  }
+
+  section {
+    margin-top: 7rem;
+  }
+
+  .header {
+    height: fit-content;
+  }
+
+  .headertocontent {
+    width: var(--container-width-md);
+    padding: 3rem;
+  }
+  .headertocontent p {
+    font-size: 0.85;
+  }
+}
+
+/* MEDIA QUERIES (medium screen) */
+@media screen and (max-width: 1024px) {
+
+  /* MAIN HEADER */
+  .maintoheader {
+    height: fit-content;
+    padding: 12rem 0;
+  }
+
+  .maintoheader-container {
+    gap: 0;
+  }
+
+  .maintoheader-circle {
+    width: 16rem;
+    height: 16rem;
+  }
+
+  /* PROGRAMS */
+  .programstowrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* VALUES */
+  .valuestocontainer {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    gap: 4rem;
+  }
+
+  .valuestowrapper {
+    gap: 4rem 3rem;
+  }
+
+  .valuestoimage {
+    display: none;
+  }
+
+  /* FAQs */
+  .faqstowrapper {
+    grid-template-columns: 1fr;
+  }
+
+  /* TESTIMONAILS */
+  .testimonails {
+    width: 75%;
+  }
+
+  /* FOOTER */
+  .footertocontainer {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+/* MEDIA QUERIES (small screen) */
+@media screen and (max-width: 600px) {
+
+  /* MAIN HEADER */
+  .maintoheader {
+    margin-top: 0;
+    padding: 12rem 0 0;
+    height: 100vh;
+  }
+
+  .maintoheader-image,
+  .maintoheader-circle {
+    display: none;
+  }
+
+  .maintoheader-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* PROGRAMS */
+  .programstowrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .programstoprogram {
+    width: 84%;
+    margin: 0 auto;
+  }
+
+  /* VALUES */
+  .valuestowrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .card .valuestovalue {
+    width: 84%;
+    margin-inline: auto;
+  }
+
+  /* FAQs */
+  .faqstowrapper {
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  /* TESTIMOMAILS */
+  .testimonails {
+    width: 100%;
+  }
+
+  /* FOOTER */
+  footer {
+    margin-top: 7rem;
+  }
+
+  .footertocontainer {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .footertocontainer article {
+    align-items: center;
+  }
+
+  .footertocontainer article p {
+    text-align: center;
+  }
 }

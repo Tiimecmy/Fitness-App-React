@@ -1,0 +1,36 @@
+.contacttocontainer {
+  display: grid;
+  place-items: center;
+}
+
+.contacttowrapper {
+  width: fit-content;
+  display: flex;
+  gap: 2rem;
+}
+
+.contacttowrapper a {
+  background: var(--color-primary);
+  font-size: 2rem;
+  border: 2px solid transparent;
+  transition: var(--transition);
+  padding: 2rem;
+  border-radius: 1.5rem;
+}
+
+.contacttowrapper a:hover {
+  background: transparent;
+  border-color: var(--color-gray-100);
+}
+
+/* MEDIA QUERIES (small screens) */
+@media screen and (max-width: 600px) {
+  .contacttowrapper {
+    gap: 1.5rem;
+  }
+  .contacttowrapper a {
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+  }
+}
